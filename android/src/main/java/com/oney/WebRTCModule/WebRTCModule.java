@@ -4,6 +4,7 @@ import androidx.annotation.Nullable;
 
 import android.util.Log;
 import android.util.SparseArray;
+import android.media.AudioAttributes;
 
 import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.Callback;
@@ -30,6 +31,7 @@ import java.util.concurrent.ExecutionException;
 import org.webrtc.*;
 import org.webrtc.audio.AudioDeviceModule;
 import org.webrtc.audio.JavaAudioDeviceModule;
+import org.webrtc.voiceengine.WebRtcAudioTrack;
 
 @ReactModule(name = "WebRTCModule")
 public class WebRTCModule extends ReactContextBaseJavaModule {
@@ -856,6 +858,9 @@ public class WebRTCModule extends ReactContextBaseJavaModule {
                 callback.invoke(false, s);
             }
         }, sdp);
+
+        WebRtcAudioTrack.setAudioTrackUsageAttribute(AudioAttributes.USAGE_MEDIA);
+
     }
 
     @ReactMethod
