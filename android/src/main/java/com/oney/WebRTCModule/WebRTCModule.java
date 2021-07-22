@@ -758,6 +758,7 @@ public class WebRTCModule extends ReactContextBaseJavaModule {
                 @Override
                 public void onSetSuccess() {}
             }, constraintsForOptions(options));
+            WebRtcAudioTrack.setAudioTrackUsageAttribute(AudioAttributes.USAGE_MEDIA);
         } else {
             Log.d(TAG, "peerConnectionCreateAnswer() peerConnection is null");
             callback.invoke(false, "peerConnection is null");
@@ -859,7 +860,7 @@ public class WebRTCModule extends ReactContextBaseJavaModule {
             }
         }, sdp);
 
-        WebRtcAudioTrack.setAudioTrackUsageAttribute(AudioAttributes.USAGE_MEDIA);
+        
 
     }
 
